@@ -1,0 +1,64 @@
+a {text-decoration: none;}
+a:link {color: blue; text-decoration: none;}
+a:visited {color: blue; text-decoration: none;}
+a:hover {color: blue; text-decoration: none;}
+a:active {color: blue; text-decoration: none;}
+
+input {
+    outline:none;
+    border: 1px solid #000;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+}
+
+table {
+    margin-top: 40px;
+    border-collapse: collapse;
+    border: none;
+}
+
+td {
+    width: 120px;
+    height: 25px;
+    border: #000 solid 1px;
+}
+
+html, body {
+    font-family: Ebrima;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    background: lightblue;
+    color: black;
+    background-image: url('/img/fudan.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#center_board {
+    width: auto;
+    margin: 0px auto;
+    text-align: center;
+}
+
+#title {
+    font-size: 30px;
+    margin-top: 200px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#copyright {
+    color: white;
+    width: auto;
+    height: auto;
+    position: fixed;
+    bottom: 15px;
+    right: 0px;
+    left: 0px;
+    text-align: center;
+}
