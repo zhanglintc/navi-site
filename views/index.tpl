@@ -12,6 +12,7 @@
 
     <script type="text/javascript" src="./js/jquery1.8.3.min.js?{{static_file_version}}"></script>
     <script type="text/javascript" src="./js/jquery1.4.1.cookie.min.js?{{static_file_version}}"></script>
+    <script type="text/javascript" src="./layer/layer.js?{{static_file_version}}"></script>
 
     <link rel="stylesheet" type="text/css" href="./css/common.css?{{static_file_version}}">
 
@@ -19,6 +20,23 @@
   </head>
 
   <body>
+    <script type="text/javascript">
+      function make_new_layer() {
+        layer.open({
+            id: "iframe_edit",
+            type: 2,
+            title: ["Edit", 'font-size: 14px;'],
+            closeBtn: 0,
+            moveEnd: function() {
+                layer.close(layer.index);
+            },
+            shadeClose: false,
+            resize: false,
+            area: ['400px', '220px'],
+            content: './layer_edit'
+        });
+      }
+    </script>
     <div id="center_board">
       <h1 id="title">Navigator</h1>
       <table align="center">
@@ -26,7 +44,7 @@
           <tr>
             % for line in range(5):
             <td>
-              <a href="http://google.com" target="_blank">google</a>
+              <span onclick="make_new_layer()">Editable</span>
             </td>
             % end
           </tr>

@@ -52,6 +52,17 @@ html, body {
     text-align: center;
 }
 
+.edit_area {
+    outline:none;
+    border: 1px solid #000;
+    width: 350px;
+    height: 24px;
+    font-size: 16px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
 #copyright {
     color: white;
     width: auto;

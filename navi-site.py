@@ -19,6 +19,10 @@ universal_ROUTE_dict = {
 def server_static(filename):
     return static_file(filename, root='./static')
 
+@route('/js/<filename>')
+def server_static_js(filename):
+    return static_file(filename, root='./static/js')
+
 @route('/css/<filename>')
 def server_static_css(filename):
     return static_file(filename, root='./static/css')
@@ -27,8 +31,17 @@ def server_static_css(filename):
 def server_static_img(filename):
     return static_file(filename, root='./static/img')
 
+@route('/layer/<filename:path>')
+def server_static_img(filename):
+    return static_file(filename, root='./static/layer')
+
 @route('/')
 @view('index')
+def index():
+    return dict(universal_ROUTE_dict)
+
+@route('/layer_edit')
+@view('layer_edit')
 def index():
     return dict(universal_ROUTE_dict)
 
