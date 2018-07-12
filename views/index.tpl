@@ -17,6 +17,9 @@
 
     <link rel="stylesheet" type="text/css" href="./css/common.css?{{static_file_version}}">
 
+    <link rel="shortcut icon" href="./img/compass.png"/>
+    <link rel="bookmark" href="./img/compass.png"/>
+
     <title>Navigator</title>
   </head>
 
@@ -26,7 +29,9 @@
     </script>
 
     <div id="center_board">
-      <h1 id="title" onclick="toggle_editable()">Navigator</h1>
+      <h1 id="title" onclick="toggle_editable()">
+        <span style="cursor: pointer;">Navigator</span>
+      </h1>
 
       <div>
         <input type="text" id="search_bar" name="search" onfocus="this.select()" onmouseup="preventDefault(event)" onkeypress='if(event.keyCode==13){window.open("https://www.google.com/search?q=" + $("#search_bar").val())}'>

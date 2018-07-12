@@ -47,7 +47,7 @@ html, body {
 
 #title {
     font-size: 30px;
-    margin-top: 200px;
+    margin-top: 170px;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -79,6 +79,10 @@ html, body {
     border-radius: 0px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
+}
+
+.cells {
+    cursor: pointer;
 }
 
 #copyright {
