@@ -12,6 +12,7 @@
 
     <script type="text/javascript" src="./js/jquery1.8.3.min.js?{{static_file_version}}"></script>
     <script type="text/javascript" src="./js/jquery1.4.1.cookie.min.js?{{static_file_version}}"></script>
+    <script type="text/javascript" src="./js/index.js?{{static_file_version}}"></script>
     <script type="text/javascript" src="./layer/layer.js?{{static_file_version}}"></script>
 
     <link rel="stylesheet" type="text/css" href="./css/common.css?{{static_file_version}}">
@@ -21,31 +22,29 @@
 
   <body>
     <script type="text/javascript">
-      function make_new_layer() {
-        layer.open({
-            id: "iframe_edit",
-            type: 2,
-            title: ["Edit", 'font-size: 14px;'],
-            closeBtn: 0,
-            moveEnd: function() {
-                layer.close(layer.index);
-            },
-            shadeClose: false,
-            resize: false,
-            area: ['400px', '220px'],
-            content: './layer_edit'
-        });
-      }
+      window.editable = false;
     </script>
+
     <div id="center_board">
-      <h1 id="title">Navigator</h1>
-      <table align="center">
+      <h1 id="title" onclick="toggle_editable()">Navigator</h1>
+
+      <div>
+        <input type="text" id="search_bar" name="search" onfocus="this.select()" onmouseup="preventDefault(event)" onkeypress='if(event.keyCode==13){window.open("https://www.google.com/search?q=" + $("#search_bar").val())}'>
+      </div>
+
+      <table id="navi_table" align="center">
+        % idx = 0
         % for row in range(4):
           <tr>
             % for line in range(5):
             <td>
-              <span onclick="make_new_layer()">Editable</span>
+              % sn = "sn_{0}".format(idx)
+              % item = sites_dict.get(sn, ["--", ""])
+              % name = item[0]
+              % site = item[1]
+              <span class="cells" id="{{sn}}" url="{{site}}" onclick="cell_click('{{sn}}')">{{name}}</span>
             </td>
+            % idx += 1
             % end
           </tr>
         % end
@@ -55,11 +54,6 @@
     </div>
 
     <script type="text/javascript">
-      function Copyright() {
-        copyright.innerHTML =  "&copy 2018-" + (new Date()).getFullYear() + " by <a style='color: white;' target='_blank' href='http://github.com/zhanglintc/navi-site'>zhanglintc</a>";
-        copyright.innerHTML += "<br>";
-        copyright.innerHTML += "<a style='color: white; font-size: 10px;' target='_blank' href='http://www.miitbeian.gov.cn'>渝ICP备17002936号</a>";
-      }
       Copyright();
     </script>
   </body>

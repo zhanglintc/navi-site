@@ -12,6 +12,7 @@
 
     <script type="text/javascript" src="./js/jquery1.8.3.min.js?{{static_file_version}}"></script>
     <script type="text/javascript" src="./js/jquery1.4.1.cookie.min.js?{{static_file_version}}"></script>
+    <script type="text/javascript" src="./js/index.js?{{static_file_version}}"></script>
 
     <link rel="stylesheet" type="text/css" href="./css/common.css?{{static_file_version}}">
 
@@ -21,6 +22,15 @@
   <body>
     <script type="text/javascript">
       function update_site_info() {
+        cell = parent.window.selected_cell;
+        name = $("#disp_name").val();
+        site = $("#site_addr").val();
+
+        parent.$("#" + cell).text(name);
+        parent.$("#" + cell).attr('url', site);
+
+        update_site_dict(cell, name, site);
+
         parent.layer.close(parent.layer.index);
         parent.layer.msg("successfully saved!", {'time': 1000});
       }
@@ -52,5 +62,13 @@
         <div id="copyright"></div>
       </div>
     </div>
+
+    <script type="text/javascript">
+      cell = parent.window.selected_cell;
+      name = parent.$("#" + cell).text();
+      site = parent.$("#" + cell).attr('url');
+      $("#disp_name").val(name);
+      $("#site_addr").val(site);
+    </script>
   </body>
 </html>

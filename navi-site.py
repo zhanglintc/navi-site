@@ -4,11 +4,14 @@
 from bottle import route, run, template, view, static_file
 from bottle import post, get, request, redirect
 import bottle
+import json
 
 bottle.debug(True)
 
 PORT=2703
 static_file_verion=1000
+
+JSON_DB_FILE = "sites.json"
 
 universal_ROUTE_dict = {
     'static_file_version': static_file_verion,
@@ -38,11 +41,47 @@ def server_static_img(filename):
 @route('/')
 @view('index')
 def index():
-    return dict(universal_ROUTE_dict)
+    try:
+        fr = open(JSON_DB_FILE, "rb")
+        sites_json = fr.read()
+        fr.close()
+        sites_dict = json.loads(sites_json)
+    except:
+        fw = open(JSON_DB_FILE, "wb")
+        fw.close()
+        sites_json = "{}"
+
+    sites_dict = json.loads(sites_json)
+    sites_dict = {"sites_dict": sites_dict}
+    return dict(universal_ROUTE_dict, **sites_dict)
 
 @route('/layer_edit')
 @view('layer_edit')
 def index():
     return dict(universal_ROUTE_dict)
+
+@post('/update_site_dict')
+def update_site_dict():
+    sn = request.forms.get('sn', None)
+    name = request.forms.get('name', None)
+    site = request.forms.get('site', None)
+
+    try:
+        fr = open(JSON_DB_FILE, "rb")
+        sites_json = fr.read()
+        fr.close()
+        sites_dict = json.loads(sites_json)
+    except:
+        sites_json = "{}"
+
+    sites_dict = json.loads(sites_json)
+    sites_dict[sn] = [name, site]
+    sites_json = json.dumps(sites_dict, indent=4)
+
+    fw = open(JSON_DB_FILE, "wb")
+    fw.write(sites_json)
+    fw.close()
+
+    return "OK"
 
 run(host='0.0.0.0', port=PORT, server='paste')
