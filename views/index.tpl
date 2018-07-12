@@ -29,8 +29,8 @@
     </script>
 
     <div id="center_board">
-      <h1 id="title" onclick="toggle_editable()">
-        <span style="cursor: pointer;">Navigator</span>
+      <h1 id="title">
+        <span onclick="toggle_editable()" style="cursor: pointer;">Navigator</span>
       </h1>
 
       <div>

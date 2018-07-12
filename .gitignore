@@ -1,4 +1,5 @@
 # User defined ignore files
+nohup.out
 sites.json
 
 # Byte-compiled / optimized / DLL files
