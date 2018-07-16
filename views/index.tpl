@@ -59,6 +59,8 @@
     </div>
 
     <script type="text/javascript">
+      $("#search_bar").focus();
+
       Copyright();
     </script>
   </body>
