@@ -17,8 +17,8 @@
 
     <link rel="stylesheet" type="text/css" href="./css/common.css?{{static_file_version}}">
 
-    <link rel="shortcut icon" href="./img/compass.png"/>
-    <link rel="bookmark" href="./img/compass.png"/>
+    <link rel="shortcut icon" href="./img/compass_128.ico"/>
+    <link rel="bookmark" href="./img/compass_128.ico"/>
 
     <title>Navigator</title>
   </head>
