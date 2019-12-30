@@ -31,7 +31,7 @@ function make_new_layer() {
         shadeClose: false,
         resize: false,
         area: ['400px', '220px'],
-        content: './layer_edit',
+        content: './layer_edit.php',
     });
 }
 
