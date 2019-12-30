@@ -32,7 +32,7 @@ html, body {
     height: auto;
     background: lightblue;
     color: black;
-    background-image: url('/img/fudan.jpg');
+    background-image: url('/static/img/fudan.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
