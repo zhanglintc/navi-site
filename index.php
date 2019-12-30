@@ -38,21 +38,29 @@
       </div>
 
       <table id="navi_table" align="center">
-        % idx = 0
-        % for row in range(4):
-          <tr>
-            % for line in range(5):
-            <td>
-              % sn = "sn_{0}".format(idx)
-              % item = sites_dict.get(sn, ["--", ""])
-              % name = item[0]
-              % site = item[1]
-              <span class="cells" id="{{sn}}" url="{{site}}" onclick="cell_click('{{sn}}')">{{name}}</span>
-            </td>
-            % idx += 1
-            % end
-          </tr>
-        % end
+        <?php
+          $fr = fopen("sites.json", "r") or die("Unable to open file!");
+          $content_json = fread($fr, filesize("sites.json"));
+          fclose($fr);
+
+          $sites = json_decode($content_json);
+
+          $idx = 0;
+          for ($row=0; $row<4; $row++) {
+            echo "<tr>";
+            for ($line=0; $line<5; $line++) {
+              echo "<td>";
+              $sn = "sn_$idx";
+              $item = $sites->{$sn};
+              $name = $item[0];
+              $site = $item[1];
+              echo "<span class='cells' id='$sn' url='$site' onclick=\"cell_click('$sn')\">$name</span>";
+              echo "</td>";
+              $idx++;
+            }
+            echo "</tr>";
+          }
+        ?>
       </table>
 
       <div id="copyright"></div>
