@@ -1,7 +1,7 @@
 // functions for index.tpl
 
 function Copyright() {
-    copyright.innerHTML =  "&copy 2018-" + (new Date()).getFullYear() + " by <a style='color: black;' target='_blank' href='http://github.com/zhanglintc/navi-site'>zhanglintc</a>";
+    copyright.innerHTML =  "&copy 2018-" + (new Date()).getFullYear() + " by <a style='color: inherit;' target='_blank' href='http://github.com/zhanglintc/navi-site'>zhanglintc</a>";
 }
 
 function update_site_dict(cell, name, site) {

@@ -28,6 +28,10 @@
       window.editable = false;
     </script>
 
+    <header>
+      &nbsp
+    </header>
+
     <div id="center_board">
       <h1 id="title">
         <span onclick="toggle_editable()" style="cursor: pointer;">Navigator</span>
@@ -62,9 +66,11 @@
           }
         ?>
       </table>
-
-      <div id="copyright"></div>
     </div>
+
+    <footer>
+      <div id="copyright"></div>
+    </footer>
 
     <script type="text/javascript">
       $("#search_bar").focus();
