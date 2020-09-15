@@ -24,16 +24,12 @@
   </head>
 
   <body>
-    <script type="text/javascript">
-      window.editable = false;
-    </script>
-
     <div id="main">
       <div id="mask"></div>
 
       <div id="header"></div>
 
-      <div id="center_board">
+      <div id="center">
         <h1 id="title">
           <span onclick="toggle_editable()" style="cursor: pointer;">Navigator</span>
         </h1>
@@ -75,8 +71,8 @@
     </div>
 
     <script type="text/javascript">
+      window.editable = false;
       $("#search_bar").focus();
-
       Copyright();
     </script>
   </body>
