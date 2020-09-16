@@ -24,51 +24,43 @@
   </head>
 
   <body>
-    <script type="text/javascript">
-      window.editable = false;
-    </script>
-
     <div id="main">
-      <div id="mask"></div>
-
       <div id="header"></div>
-
-      <div id="center_board">
+      <div id="center">
         <h1 id="title">
           <span onclick="toggle_editable()" style="cursor: pointer;">Navigator</span>
         </h1>
-
         <div id="search_area">
           <input type="text" id="search_bar" name="search" onfocus="this.select()" onmouseup="preventDefault(event)" onkeypress='if(event.keyCode==13){window.open("https://www.google.com/search?q=" + $("#search_bar").val())}'>
         </div>
-
-        <table id="navi_table" align="center">
-          % idx = 0
-          % for row in range(4):
-            <tr>
-              % for line in range(5):
-              <td>
-                % sn = "sn_{0}".format(idx)
-                % item = sites_dict.get(sn, ["--", ""])
-                % name = item[0]
-                % site = item[1]
-                <span class="cells" id="{{sn}}" url="{{site}}" onclick="cell_click('{{sn}}')">{{name}}</span>
-              </td>
-              % idx += 1
-              % end
-            </tr>
-          % end
-        </table>
+        <div id="table_wrapper">
+          <div id="mask"></div>
+          <table id="navi_table" align="center">
+            % idx = 0
+            % for row in range(4):
+              <tr>
+                % for line in range(5):
+                <td>
+                  % sn = "sn_{0}".format(idx)
+                  % item = sites_dict.get(sn, ["--", ""])
+                  % name = item[0]
+                  % site = item[1]
+                  <span class="cells" id="{{sn}}" url="{{site}}" onclick="cell_click('{{sn}}')">{{name}}</span>
+                </td>
+                % idx += 1
+                % end
+              </tr>
+            % end
+          </table>
+        </div>
       </div>
-
       <div id="footer">
         <div id="copyright"></div>
       </div>
     </div>
-
     <script type="text/javascript">
+      window.editable = false;
       $("#search_bar").focus();
-
       Copyright();
     </script>
   </body>
