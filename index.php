@@ -25,51 +25,47 @@
 
   <body>
     <div id="main">
-      <div id="mask"></div>
-
       <div id="header"></div>
-
       <div id="center">
         <h1 id="title">
           <span onclick="toggle_editable()" style="cursor: pointer;">Navigator</span>
         </h1>
-
         <div id="search_area">
           <input type="text" id="search_bar" name="search" onfocus="this.select()" onmouseup="preventDefault(event)" onkeypress='if(event.keyCode==13){window.open("https://www.google.com/search?q=" + $("#search_bar").val())}'>
         </div>
+        <div id="table_wrapper">
+          <div id="mask"></div>
+          <table id="navi_table" align="center">
+            <?php
+              $fr = fopen("sites.json", "r") or die("Unable to open file!");
+              $content_json = fread($fr, filesize("sites.json"));
+              fclose($fr);
 
-        <table id="navi_table" align="center">
-          <?php
-            $fr = fopen("sites.json", "r") or die("Unable to open file!");
-            $content_json = fread($fr, filesize("sites.json"));
-            fclose($fr);
+              $sites = json_decode($content_json);
 
-            $sites = json_decode($content_json);
-
-            $idx = 0;
-            for ($row=0; $row<4; $row++) {
-              echo "<tr>";
-              for ($line=0; $line<5; $line++) {
-                echo "<td>";
-                $sn = "sn_$idx";
-                $item = $sites->{$sn};
-                $name = $item[0];
-                $site = $item[1];
-                echo "<span class='cells' id='$sn' url='$site' onclick=\"cell_click('$sn')\">$name</span>";
-                echo "</td>";
-                $idx++;
+              $idx = 0;
+              for ($row=0; $row<4; $row++) {
+                echo "<tr>";
+                for ($line=0; $line<5; $line++) {
+                  echo "<td>";
+                  $sn = "sn_$idx";
+                  $item = $sites->{$sn};
+                  $name = $item[0];
+                  $site = $item[1];
+                  echo "<span class='cells' id='$sn' url='$site' onclick=\"cell_click('$sn')\">$name</span>";
+                  echo "</td>";
+                  $idx++;
+                }
+                echo "</tr>";
               }
-              echo "</tr>";
-            }
-          ?>
-        </table>
+            ?>
+          </table>
+        </div>
       </div>
-
       <div id="footer">
         <div id="copyright"></div>
       </div>
     </div>
-
     <script type="text/javascript">
       window.editable = false;
       $("#search_bar").focus();
