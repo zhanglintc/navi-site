@@ -131,9 +131,14 @@ body {
     cursor: pointer;
 }
 
+#background_discreption {
+    padding-top: 15px;
+    text-align: center;
+}
+
 #footer {
     width: 100%;
-    height: 15%;
+    height: 10%;
     display: flex;
     padding-bottom: 10px;
     align-items: flex-end;

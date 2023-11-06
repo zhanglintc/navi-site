@@ -26,6 +26,7 @@
   <body>
     <div id="main">
       <div id="header"></div>
+
       <div id="center">
         <h1 id="title">
           <span onclick="toggle_editable()" style="cursor: pointer;">Navigator</span>
@@ -61,16 +62,26 @@
             ?>
           </table>
         </div>
+        <div id="background_discreption"></div>
       </div>
+
       <div id="footer">
         <div id="copyright"></div>
       </div>
     </div>
+
     <script type="text/javascript">
+      function set_description(daysAgo, description) {
+        let desc = $(`#background_discreption`);
+        desc.text(description);
+      }
+
       window.editable = false;
       $("#search_bar").focus();
       Copyright();
     </script>
+
+    <script defer src="https://bing.zhanglintc.co/description_with_callback?daysAgo=0&callback=set_description"></script>
   </body>
 </html>
 
